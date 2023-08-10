@@ -436,7 +436,6 @@ local function Initiate()
 				Clone.HumanoidRootPart.CFrame=Clone.HumanoidRootPart.CFrame*CFrame.Angles(0,math.rad(180),0)
             elseif Message == ".boxing on" and Host and Host.Character and Host.Character:FindFirstChild("Humanoid") and Host.Character.Humanoid.Health > 0 then
                     local PointInTable = getgenv().PointInTable
-                    if game:GetService("Players").LocalPlayer.DataFolder.Information.BoxingValue.Value==2500 then local a=game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame;wait(.1)game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame=CFrame.new(-236.877396,22.2921352,-1141.75842,0.999998629,-2.56371422e-08,-0.00166321127,2.56252584e-08,1,-7.16627246e-09,0.00166321127,7.12364256e-09,0.999998629)fireclickdetector(workspace.Ignored.Shop["Boxing Moveset (Require: Max Box Stat) - $0"].ClickDetector,0)fireclickdetector(workspace.Ignored.Shop["Boxing Moveset (Require: Max Box Stat) - $0"].ClickDetector)wait(1)game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame=a end
                     if PointInTable == 1 then
                         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-276.704926, 22.2921352, -1108.65259, 0.999924898, -1.71803425e-08, -0.0122571439, 1.66508212e-08, 1, -4.33031033e-08, 0.0122571439, 4.30957563e-08, 0.999924898)
                         Boxing = true
@@ -444,16 +443,28 @@ local function Initiate()
                         game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
                         game:GetService("RunService"):Set3dRenderingEnabled(true)
                         Frame.Visible = false
-                        repeat wait(.1) mouse1click() if not game.Players.LocalPlayer.Character:FindFirstChild("Combat") then game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack.Combat) end until Boxing == false
-                        if game:GetService("Players").LocalPlayer.DataFolder.Information.BoxingValue.Value == 2500 then
+                        wait(.3)
+                        repeat wait(.1) mouse1click() if not game.Players.LocalPlayer.Character:FindFirstChild("Combat") then game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack.Combat) end until Boxing == false or game:GetService("Players").LocalPlayer.DataFolder.Information:FindFirstChild("BoxingValue").Value == "2500"
+                        if game:GetService("Players").LocalPlayer.DataFolder.Information.BoxingValue.Value >= "2500" then
                             game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false
                             wait(.1)
                             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-236.877396, 22.2921352, -1141.75842, 0.999998629, -2.56371422e-08, -0.00166321127, 2.56252584e-08, 1, -7.16627246e-09, 0.00166321127, 7.12364256e-09, 0.999998629)
-                            fireclickdetector(workspace.Ignored.Shop["Boxing Moveset (Require: Max Box Stat) - $0"].ClickDetector, 0)
-                            fireclickdetector(workspace.Ignored.Shop["Boxing Moveset (Require: Max Box Stat) - $0"].ClickDetector)
+                            wait(.1)
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
                             wait(1)
+                            for i,v in ipairs(game:GetService("Workspace"):GetDescendants()) do
+                                if v.Name=="ClickDetector" and v.Parent.Name == "Boxing Moveset (Require: Max Box Stat) - $0" then
+                                    local PlayerDistance = (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-v.Parent:GetPivot().Position).Magnitude
+                                    if PlayerDistance <= 10 then
+                                        fireclickdetector(v,0)
+                                    end
+                                end
+                            end
+                            wait(1)
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false
+                            wait(.1)
                             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-276.704926, 22.2921352, -1108.65259, 0.999924898, -1.71803425e-08, -0.0122571439, 1.66508212e-08, 1, -4.33031033e-08, 0.0122571439, 4.30957563e-08, 0.999924898)
-                            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Finished, now do !boxing off once all yours alts are done", "All")
+                            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Finished, now do .boxing off once all yours alts are done", "All")
                         end
                     elseif PointInTable == 2 then
                         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-282.312958, 22.7952995, -1113.83496, 0.0213436615, 2.3726324e-08, -0.999772191, -2.53757388e-08, 1, 2.31899957e-08, 0.999772191, 2.48749998e-08, 0.0213436615)
@@ -462,16 +473,27 @@ local function Initiate()
                         game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
                         game:GetService("RunService"):Set3dRenderingEnabled(true)
                         Frame.Visible = false
-                        repeat wait(.1) mouse1click() if not game.Players.LocalPlayer.Character:FindFirstChild("Combat") then game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack.Combat) end until Boxing == false
-                        if game:GetService("Players").LocalPlayer.DataFolder.Information.BoxingValue.Value == 2500 then
+                        repeat wait(.1) mouse1click() if not game.Players.LocalPlayer.Character:FindFirstChild("Combat") then game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack.Combat) end until Boxing == false or game:GetService("Players").LocalPlayer.DataFolder.Information:FindFirstChild("BoxingValue").Value == "2500"
+                        if game:GetService("Players").LocalPlayer.DataFolder.Information.BoxingValue.Value >= "2500" then
                             game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false
                             wait(.1)
                             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-236.877396, 22.2921352, -1141.75842, 0.999998629, -2.56371422e-08, -0.00166321127, 2.56252584e-08, 1, -7.16627246e-09, 0.00166321127, 7.12364256e-09, 0.999998629)
-                            fireclickdetector(workspace.Ignored.Shop["Boxing Moveset (Require: Max Box Stat) - $0"].ClickDetector, 0)
-                            fireclickdetector(workspace.Ignored.Shop["Boxing Moveset (Require: Max Box Stat) - $0"].ClickDetector)
+                            wait(.1)
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
                             wait(1)
+                            for i,v in ipairs(game:GetService("Workspace"):GetDescendants()) do
+                                if v.Name=="ClickDetector" and v.Parent.Name == "Boxing Moveset (Require: Max Box Stat) - $0" then
+                                    local PlayerDistance = (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-v.Parent:GetPivot().Position).Magnitude
+                                    if PlayerDistance <= 10 then
+                                        fireclickdetector(v,0)
+                                    end
+                                end
+                            end
+                            wait(1)
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false
+                            wait(.1)
                             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-282.312958, 22.7952995, -1113.83496, 0.0213436615, 2.3726324e-08, -0.999772191, -2.53757388e-08, 1, 2.31899957e-08, 0.999772191, 2.48749998e-08, 0.0213436615)
-                            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Finished, now do !boxing off", "All")
+                            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Finished, now do .boxing off", "All")
                         end
                     elseif PointInTable == 3 then
                         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-276.611084, 22.7952995, -1119.51868, -0.99977082, 1.00380774e-07, 0.0214086752, 9.99779743e-08, 1, -1.98852508e-08, -0.0214086752, -1.77402963e-08, -0.99977082)
@@ -480,16 +502,27 @@ local function Initiate()
                         game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
                         game:GetService("RunService"):Set3dRenderingEnabled(true)
                         Frame.Visible = false
-                        repeat wait(.1) mouse1click() if not game.Players.LocalPlayer.Character:FindFirstChild("Combat") then game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack.Combat) end until Boxing == false
-                        if game:GetService("Players").LocalPlayer.DataFolder.Information.BoxingValue.Value == 2500 then
+                        repeat wait(.1) mouse1click() if not game.Players.LocalPlayer.Character:FindFirstChild("Combat") then game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack.Combat) end until Boxing == false or game:GetService("Players").LocalPlayer.DataFolder.Information:FindFirstChild("BoxingValue").Value == "2500"
+                        if game:GetService("Players").LocalPlayer.DataFolder.Information.BoxingValue.Value >= "2500" then
                             game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false
                             wait(.1)
                             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-236.877396, 22.2921352, -1141.75842, 0.999998629, -2.56371422e-08, -0.00166321127, 2.56252584e-08, 1, -7.16627246e-09, 0.00166321127, 7.12364256e-09, 0.999998629)
-                            fireclickdetector(workspace.Ignored.Shop["Boxing Moveset (Require: Max Box Stat) - $0"].ClickDetector, 0)
-                            fireclickdetector(workspace.Ignored.Shop["Boxing Moveset (Require: Max Box Stat) - $0"].ClickDetector)
+                            wait(.1)
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
                             wait(1)
+                            for i,v in ipairs(game:GetService("Workspace"):GetDescendants()) do
+                                if v.Name=="ClickDetector" and v.Parent.Name == "Boxing Moveset (Require: Max Box Stat) - $0" then
+                                    local PlayerDistance = (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-v.Parent:GetPivot().Position).Magnitude
+                                    if PlayerDistance <= 10 then
+                                        fireclickdetector(v,0)
+                                    end
+                                end
+                            end
+                            wait(1)
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false
+                            wait(.1)
                             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-276.611084, 22.7952995, -1119.51868, -0.99977082, 1.00380774e-07, 0.0214086752, 9.99779743e-08, 1, -1.98852508e-08, -0.0214086752, -1.77402963e-08, -0.99977082)
-                            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Finished, now do !boxing off", "All")
+                            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Finished, now do .boxing off", "All")
                         end
                     elseif PointInTable == 4 then
                         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-271.634491, 22.7952995, -1113.87415, -0.00183025643, -2.98695966e-08, 0.999998331, 2.4219422e-09, 1, 2.98740765e-08, -0.999998331, 2.47661558e-09, -0.00183025643)
@@ -498,16 +531,27 @@ local function Initiate()
                         game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
                         game:GetService("RunService"):Set3dRenderingEnabled(true)
                         Frame.Visible = false
-                        repeat wait(.1) mouse1click() if not game.Players.LocalPlayer.Character:FindFirstChild("Combat") then game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack.Combat) end until Boxing == false or game:GetService("Players").LocalPlayer.DataFolder.Information.BoxingValue.Value == 2500
-                        if game:GetService("Players").LocalPlayer.DataFolder.Information.BoxingValue.Value == 2500 then
+                        repeat wait(.1) mouse1click() if not game.Players.LocalPlayer.Character:FindFirstChild("Combat") then game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack.Combat) end until Boxing == false or game:GetService("Players").LocalPlayer.DataFolder.Information:FindFirstChild("BoxingValue").Value >= "2500"
+                        if game:GetService("Players").LocalPlayer.DataFolder.Information.BoxingValue.Value >= "2500" then
                             game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false
                             wait(.1)
                             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-236.877396, 22.2921352, -1141.75842, 0.999998629, -2.56371422e-08, -0.00166321127, 2.56252584e-08, 1, -7.16627246e-09, 0.00166321127, 7.12364256e-09, 0.999998629)
-                            fireclickdetector(workspace.Ignored.Shop["Boxing Moveset (Require: Max Box Stat) - $0"].ClickDetector, 0)
-                            fireclickdetector(workspace.Ignored.Shop["Boxing Moveset (Require: Max Box Stat) - $0"].ClickDetector)
+                            wait(.1)
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
                             wait(1)
+                            for i,v in ipairs(game:GetService("Workspace"):GetDescendants()) do
+                                if v.Name=="ClickDetector" and v.Parent.Name == "Boxing Moveset (Require: Max Box Stat) - $0" then
+                                    local PlayerDistance = (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-v.Parent:GetPivot().Position).Magnitude
+                                    if PlayerDistance <= 10 then
+                                        fireclickdetector(v,0)
+                                    end
+                                end
+                            end
+                            wait(1)
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false
+                            wait(.1)
                             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-271.634491, 22.7952995, -1113.87415, -0.00183025643, -2.98695966e-08, 0.999998331, 2.4219422e-09, 1, 2.98740765e-08, -0.999998331, 2.47661558e-09, -0.00183025643)
-                            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Finished, now do !boxing off", "All")
+                            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Finished, now do .boxing off", "All")
                         end
                     end
             elseif Message == ".boxing off" and Host and Host.Character and Host.Character:FindFirstChild("Humanoid") and Host.Character.Humanoid.Health > 0 then
@@ -527,6 +571,7 @@ local function Initiate()
                 end
 			elseif Args[1] == ".redeem" and not Crashed then
                 game:GetService("ReplicatedStorage").MainEvent:FireServer("EnterPromoCode", "MELONBEAR")
+                wait(3)
                 game:GetService("ReplicatedStorage").MainEvent:FireServer("EnterPromoCode", "DHT100K")
 			elseif Args[1] == ".stopdrop" then
 				Drop(false)
